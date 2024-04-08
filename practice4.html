@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EECS 348 Lab Seven Practice Four</title>
+</head>
+<body>
+    <h1>EECS 348 Lab Seven Practice Four</h1>
+    <form method="post">
+        <p>Size of the multiplication table: <input type="text" name="choice"></p>
+        <input type="submit" value="Generate Table">
+    </form>
+
+    <?php
+    function generateMultiplicationTable() {
+        if (isset($_POST['choice'])) {
+            $choice = intval($_POST['choice']);
+
+            echo '<table border="1">';
+            echo '<tr>';
+            echo '<th>&times;</th>';
+
+            for ($x = 1; $x <= $choice; $x++) {
+                echo '<th>' . $x . '</th>';
+            }
+            echo '</tr>';
+
+            for ($x = 1; $x <= $choice; $x++) { // corrected syntax: added semicolon
+                echo '<tr>';
+                echo '<th>' . $x . '</th>';
+                for ($y = 1; $y <= $choice; $y++) {
+                    echo '<td>' . ($x * $y) . '</td>';
+                }
+                echo '</tr>';
+            }
+
+            echo '</table>';
+        }
+    }
+
+    generateMultiplicationTable();
+    ?>
+</body>
+</html>
